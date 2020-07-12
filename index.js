@@ -1,9 +1,14 @@
+//                            Code by vrf#3319 <- discord
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const bot = new Discord.Client();
 
-client.login("NzI1NDYzMzM3MTgxMjQ5NTg2.XvZZaA.sb3M5YESTnPEHd48wmENtrKbot8");
+bot.on("ready", function () {
+    console.log('$(bot.user.username) Is Online!');
+});
 
-client.on('message', (message) =>{
+bot.login("NzI1NDYzMzM3MTgxMjQ5NTg2.XvZZaA.sb3M5YESTnPEHd48wmENtrKbot8");
+
+bot.on('message', (message) =>{
     if(message.content == "&test")
     {
     message.channel.send("Бот работает!");
@@ -19,3 +24,11 @@ client.on('message', (message) =>{
     message.channel.send("потом")
     }
 });
+//Discord
+//█_____█___█_████______████____█____█____█████___█████___██___████_
+//█_____█___██____██___█______█████████______██______██__█_█__█____█
+//_█___█____██________███______█____█______███_____███_____█___█████
+//_█___█____██_________█_____█████████_______██______██____█_______█
+//__█_█_____██_________█______█____█__________█_______█____█_____██_
+//___█______██_________█_____█____█_______█████___█████____█__████__
+//
