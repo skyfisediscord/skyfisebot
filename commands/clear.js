@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
     name: "clear",
     description: "clears message",
-    usage: "?clear",
+    usage: "s!clear",
     accessableby: "Members",
     aliases: ['c', 'purge']
 }

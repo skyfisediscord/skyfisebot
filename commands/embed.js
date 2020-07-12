@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
     name: "embed",
     description: "example of an Embed.",
-    usage: "?embed",
+    usage: "s!embed",
     accessableby: "Members",
     aliases: []
 }
