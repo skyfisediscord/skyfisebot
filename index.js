@@ -1,34 +1,49 @@
-//                            Code by vrf#3319 <- discord
-const Discord = require("discord.js");
-const bot = new Discord.Client();
+const Discord = require('discord.js');
+const botsettings = require('./botsettings.json');
 
-bot.on("ready", function () {
-    console.log('$(bot.user.username) Is Online!');
+const bot = new Discord.Client({disableEveryone: true});
+
+bot.on("guildMemberAdd", member => {
+    const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === 'welcome')
+    welcomeChannel.send (`Welcome! ${member}`)
+})
+
+require("./util/eventHandler")(bot)
+
+const fs = require("fs");
+bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
+
+fs.readdir("./commands/", (err, files) => {
+
+    if(err) console.log(err)
+
+    let jsfile = files.filter(f => f.split(".").pop() === "js") 
+    if(jsfile.length <= 0) {
+         return console.log("[LOGS] Couldn't Find Commands!");
+    }
+
+    jsfile.forEach((f, i) => {
+        let pull = require(`./commands/${f}`);
+        bot.commands.set(pull.config.name, pull);  
+        pull.config.aliases.forEach(alias => {
+            bot.aliases.set(alias, pull.config.name)
+        });
+    });
 });
 
-bot.login(process.env.token);
+bot.on("message", async message => {
+    if(message.author.bot || message.channel.type === "dm") return;
 
-bot.on('message', (message) =>{
-    if(message.content == "&test")
-    {
-    message.channel.send("Бот работает!");
-    }
-    
-    if(message.content == "prefixbot")
-    {
-    message.channel.send("Префикс бота - & ")
-    }
+    let prefix = botsettings.prefix;
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = message.content.substring(message.content.indexOf(' ')+1);
 
-    if(message.content == "blabla")
-    {
-    message.channel.send("потом")
-    }
-});
-//Discord
-//█_____█___█_████______████____█____█____█████___█████___██___████_
-//█_____█___██____██___█______█████████______██______██__█_█__█____█
-//_█___█____██________███______█____█______███_____███_____█___█████
-//_█___█____██_________█_____█████████_______██______██____█_______█
-//__█_█_____██_________█______█____█__________█_______█____█_____██_
-//___█______██_________█_____█____█_______█████___█████____█__████__
-//
+    if(!message.content.startsWith(prefix)) return;
+    let commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)))
+    if(commandfile) commandfile.run(bot,message,args)
+
+})
+
+bot.login(botsettings.token);
