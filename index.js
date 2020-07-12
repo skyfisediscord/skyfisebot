@@ -6,7 +6,7 @@ bot.on("ready", function () {
     console.log('$(bot.user.username) Is Online!');
 });
 
-bot.login("NzI1NDYzMzM3MTgxMjQ5NTg2.XvZZaA.sb3M5YESTnPEHd48wmENtrKbot8");
+bot.login(process.env.token);
 
 bot.on('message', (message) =>{
     if(message.content == "&test")
