@@ -50,6 +50,11 @@ bot.on('message', (message) =>{
     {
     message.channel.send("Префикс бота - s!")
     }
+
+    if(message.content == "s!help")
+    {
+    message.channel.send("Тест1\nТест2\nчечня3")
+    }
 });
 
 //Discord
