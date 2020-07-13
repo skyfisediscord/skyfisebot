@@ -11,19 +11,44 @@ bot.on("ready", function () {
 bot.login(process.env.token);
 
 bot.on('message', (message) =>{
-    if(message.content == "&test")
+    if(message.content == "s!test")
     {
     message.channel.send("Бот работает!");
     }
     
     if(message.content == "prefixbot")
     {
-    message.channel.send("Префикс бота - & ")
+    message.channel.send("Префикс бота - s! ")
     }
 
-    if(message.content == "blabla")
+    if(message.content == "префиксбота")
     {
-    message.channel.send("потом")
+    message.channel.send("Префикс бота - s!")
+    }
+
+    if(message.content == "префикс бота")
+    {
+    message.channel.send("Префикс бота - s!")
+    }
+
+    if(message.content == "Префиксбота")
+    {
+    message.channel.send("Префикс бота - s!")
+    }
+
+    if(message.content == "Префикс бота")
+    {
+    message.channel.send("Префикс бота - s!")
+    }
+
+    if(message.content == "Prefixbot")
+    {
+    message.channel.send("Префикс бота - s!")
+    }
+
+    if(message.content == "Prefix bot")
+    {
+    message.channel.send("Префикс бота - s!")
     }
 });
 //Discord
