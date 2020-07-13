@@ -1,56 +1,29 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const botsettings = new Discord.Client();
+const {
+    prefix,
+    token,
+} = require('./config.json');
+const ytdl = require('ytdl-core');
+const bot = new Discord.Client();
 
-const bot = new Discord.Client({disableEveryone: true});
+bot.login(process.env.token);
 
 bot.on("ready", function () {
     console.log('$(bot.user.username) Is Online!');
     bot.user.setActivity("Я замегафтельный бот!:dog:", {type: "CUSTOM_STATUS"})
 });
 
-bot.login(process.env.token);
+client.once('ready', () => {
+    console.log('Ready!');
+})
+client.once('reconnecting', () => {
+    console.log('Reconnecting!');
+})
+client.once('disconnect', () => {
+    console.log('Disconnect!');
+})
 
-bot.on('message', (message) =>{
-    if(message.content == "s!test")
-    {
-    message.channel.send("Бот работает!");
-    }
-    
-    if(message.content == "prefixbot")
-    {
-    message.channel.send("Префикс бота - s! ")
-    }
-
-    if(message.content == "префиксбота")
-    {
-    message.channel.send("Префикс бота - s!")
-    }
-
-    if(message.content == "префикс бота")
-    {
-    message.channel.send("Префикс бота - s!")
-    }
-
-    if(message.content == "Префиксбота")
-    {
-    message.channel.send("Префикс бота - s!")
-    }
-
-    if(message.content == "Префикс бота")
-    {
-    message.channel.send("Префикс бота - s!")
-    }
-
-    if(message.content == "Prefixbot")
-    {
-    message.channel.send("Префикс бота - s!")
-    }
-
-    if(message.content == "Prefix bot")
-    {
-    message.channel.send("Префикс бота - s!")
-    }
-});
 //Discord
 //█_____█___█_████______████____█____█____█████___█████___██___████_
 //█_____█___██____██___█______█████████______██______██__█_█__█____█
