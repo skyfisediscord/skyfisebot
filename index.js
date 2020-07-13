@@ -1,14 +1,16 @@
-//                            Code by vrf#3319 <- discord
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const botsettings = new Discord.Client();
+
+const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", function () {
     console.log('$(bot.user.username) Is Online!');
+    bot.user.setActivity("Я замегафтельный бот!:dog:", {type: "CUSTOM_STATUS"})
 });
 
-client.login("NzI1NDYzMzM3MTgxMjQ5NTg2.XwxDvw.azoDFwusX7069gyk-2unbpGt4Mc");
+bot.login(process.env.token);
 
-client.on('message', (message) =>{
+bot.on('message', (message) =>{
     if(message.content == "&test")
     {
     message.channel.send("Бот работает!");
