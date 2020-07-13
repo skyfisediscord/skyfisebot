@@ -6,7 +6,7 @@ bot.on("ready", function () {
     console.log('$(bot.user.username) Is Online!');
 });
 
-client.login("NzI1NDYzMzM3MTgxMjQ5NTg2.XvZcGQ.Zz0aLW6xXwgsMwm0GX9J1HXziV4");
+client.login("NzI1NDYzMzM3MTgxMjQ5NTg2.XwxDvw.azoDFwusX7069gyk-2unbpGt4Mc");
 
 client.on('message', (message) =>{
     if(message.content == "&test")
