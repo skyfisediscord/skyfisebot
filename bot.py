@@ -96,4 +96,4 @@ async def help(ctx):
 ############################################## 
 ##############################################
 
-client.run(settings['token'])
+client.run(env.process.token)
